@@ -36,7 +36,7 @@ The raw data the following format:
         - Amplitude block
         - Phase Block
 
-Below figure is the example of amplitude block(Left) and phase block(Right)
+The below figure is an example of the amplitude block(Left) and phase block(Right)
 
 ![Example of data block: 2S1](./experiments/pic/Ori.pdf)
 
@@ -53,7 +53,7 @@ Four models are used in this repository:
 
 You can train other SAR classification models and use them for attacking experiments.
 
-## Quick Start Guide for Attcking and Adversarial Examples Generation
+## Quick Start Guide for Attacking and Adversarial Examples Generation
 
 1. You can generate the adversarial examples by running the following command:
 ```shell
@@ -63,7 +63,7 @@ $ python3 Attack.py
 
 2. The generated adversarial examples would be stored as a ".pkl" file in the directory **./dataset/soc/XX**. ("XX" is the model name). The overview image will be stored in the directory **./dataset/soc/per_img**. 
 
-3. You can run the file **'Trans_attack.py'** to evaluate the attack transferbility for target models.
+3. You can run the file **'Trans_attack.py'** to evaluate the attack transferability for target models.
 ```shell
 $ cd src 
 $ python3 Trans_attack.py
