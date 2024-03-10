@@ -42,13 +42,14 @@ def di_mi_fgsm_attack(model, image, label, epsilon, num_iterations = 10, momentu
     for _ in range(num_iterations):
 
         # Compute the loss
-        adv_image = adv_image.detach()
-        adv_image.requires_grad = True
-        model.net.zero_grad()
-
         di_image = input_diversity(adv_image)
+        di_image = di_image.detach()
+        di_image.requires_grad = True
+        
+        model.net.zero_grad()
         loss = loss_fun(model, di_image, label)
         loss.backward()
+        
         grad = di_image.grad.data
 
         # Get the gradient
