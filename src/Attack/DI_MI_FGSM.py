@@ -45,9 +45,11 @@ def di_mi_fgsm_attack(model, image, label, epsilon, num_iterations = 10, momentu
         adv_image = adv_image.detach()
         adv_image.requires_grad = True
         model.net.zero_grad()
-        loss = loss_fun(model, adv_image, label)
+
+        di_image = input_diversity(adv_image)
+        loss = loss_fun(model, di_image, label)
         loss.backward()
-        grad = adv_image.grad.data
+        grad = di_image.grad.data
 
         # Get the gradient
         g = momentum * g + (grad/(torch.mean(torch.abs(grad), dim=(1,2,3), keepdim=True))).cuda()
